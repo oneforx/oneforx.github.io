@@ -1,0 +1,28 @@
+{
+  "root": "apps/oneforx-front-e2e",
+  "sourceRoot": "apps/oneforx-front-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/oneforx-front-e2e/cypress.json",
+        "devServerTarget": "oneforx-front:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "oneforx-front:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/oneforx-front-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["oneforx-front"]
+}

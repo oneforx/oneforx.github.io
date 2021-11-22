@@ -1,4 +1,7 @@
 {
   "version": 2,
-  "projects": {}
+  "projects": {
+    "oneforx-front": "apps/oneforx-front",
+    "oneforx-front-e2e": "apps/oneforx-front-e2e"
+  }
 }

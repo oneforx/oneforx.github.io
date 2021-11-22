@@ -1,0 +1,72 @@
+{
+  "root": "apps/oneforx-front",
+  "sourceRoot": "apps/oneforx-front/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/oneforx-front",
+        "index": "apps/oneforx-front/src/index.html",
+        "baseHref": "/",
+        "main": "apps/oneforx-front/src/main.tsx",
+        "polyfills": "apps/oneforx-front/src/polyfills.ts",
+        "tsConfig": "apps/oneforx-front/tsconfig.app.json",
+        "assets": [
+          "apps/oneforx-front/src/favicon.ico",
+          "apps/oneforx-front/src/assets"
+        ],
+        "styles": ["apps/oneforx-front/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/oneforx-front/src/environments/environment.ts",
+              "with": "apps/oneforx-front/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "oneforx-front:build",
+        "hmr": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "oneforx-front:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/oneforx-front/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/oneforx-front"],
+      "options": {
+        "jestConfig": "apps/oneforx-front/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
